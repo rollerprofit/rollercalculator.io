@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+     <script src="https://unpkg.com/htmx.org@1.9.11" integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0" crossorigin="anonymous"></script>
+     <script src="script.js"> </script>
+</head>
+<body>
+  <div class="container">
+    <div class="row d-flex">
+      <img src="" class="text-center col w-50" alt="hamster avec une calculatrice qui veut des bitcoins" />
+      <div class="col-lg-6 col-12">
+        <h2 class="display-3 mb-5"> <strong>Rollercoin </strong><br />reward calculator</h2>
+        <p class="works mb-3"><span> How it works for a good calculation :</span> Choose a crypto in the dropdown menu and enter the value for the network power in roller-coin game. Ex : 10.472 Eh/s/  and your mining power in Th/s we caclulcate with 100% of the power. For example 4.5 Ph/s  is 4500 Th/s.
+          The calculation takes into account the boosted of the temporary increase of the rewards.</p>
+      </div>
+    </div>
+
+    <div class="row row-cols-lg-2 row-cols-1 mb-3">
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">One Coin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">All coins</a>
+        </li>
+      </ul>
+      <form  class="col form-control" id="form-coins"   hx-get="/changed"
+      hx-trigger="change"
+      hx-target="#accordionResults">
+        <h3 class="mb-4">Network power</h3>
+        <select class="form-control"  name ="coin" id="coinChoose" >
+          <option value="---">---</option>
+          <option value="20000">Bitcoin</option>
+          <option value="145">Doge</option>
+          <option value="0.0045">Ethereum</option>
+          <option value="30">Rollertoken</option>
+          <option value="250">Rst</option>
+          <option value="0.035">BNB</option>
+          <option value="12">Matic</option>
+          <option value="0.11">Solana</option>
+          <option value="80">Tron</option>
+          <option value="0.075">Ltc</option>
+        </select>
+
+        <h3 class="mb-4">Temporary increase of the reward</h3>
+        <input id ="boosted-reward" type="number" name="networkCustomReward" placeholder=" value of the reward boosted"  class="col form-control" step="0.001" />
+
+        <h3 class ="mb-4">Network power</h3>
+        <input id ="network-power" type="number" placeholder="10.472 Eh/s" class="col form-control"   name ="networkPower" step="0.001" min="1.000" value=""
+          />
+
+        <h3 class ="mb-4">My power</h3>
+        <input id="myPower"type="number" placeholder=" value in  Th/s" class ="power mb-4"  name ="myPower" step="0.01" min="1.00" value=""
+          />
+
+        <button title="calculate" type="submit" class ="btn btn-primary" >calculate</button>
+      </form>
+    </div>
+
+    <div class="text-center">
+      <div class="accordion" id="accordionResults">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              My reward
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show mt-3" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <p class="douze"> The reward is for 12 hours : </p>
+              <p class="one-day"> The reward is for a day : </p>
+              <p class="one-week"> The reward is for a week : </p>
+              <p class="one-month"> The reward is for a month : </p>
+              <p  class="one-year"> The reward is for a year: </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+
+      <div class="text-center">
+        <div class="accordion" id="accordionPower">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#powerminer" aria-expanded="true" aria-controls="powerminer">
+                My new hashrate
+              </button>
+            </h2>
+            <div id="powerminer" class="accordion-collapse collapse show mt-3" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <p class="new-hashrate"> The new hashrate : </p>
+                
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <h4 class ="display-5 col mt-5 ">Thanks for support <i class="fas fa-handshake"></i> </h4><button type="button" title="show support" class ="btn btn-primary col supportme" (click)="onSupport()" >Show support </button>
+      <!--<p class="help " >  Use my referal link : </p><a href="https://rollercoin.com/?r=klmveto9" >	<img class="col-12 img-fluid" src="https://static.rollercoin.com/static/img/ref/gen2/w970h90.gif" alt="970h90" /></a>-->
+      <p class="fw-bold">Roller reward Calculator  is not associated with RollerCoin</p> 
+      <div class="helpgroup"    style="display:none">
+        <p class="help" >You can help me by donation in busd : <br /><span class="coins"></span> 0x8c9bccc47e1cafe3c2f4408c984c884acb907215</p>
+        <p class="help" >You can help me by donation in eth :  <br /><span class="coins">30xb13476334fda1ed8fd602da41bbeb2e260f437ed </span></p>
+        <p class="help" >You can help me by donation in doge :  <br /><span class="coins"> DTeRDn2hNxR1ubWKHhdBMdDGrycY4X6HRK </span> </p>
+        <p class="help" >You can help me by donation in BNB :  <br /><span class="coins"> 0x8c9bccc47e1cafe3c2f4408c984c884acb907215 </span> </p>
+        <p class="help" >You can help me by donation in btc : <br /><span class="coins">3BYeTztLTUh9AfUEPDEB3ExVoLTq2PCDeH </span></p>
+      </div>
+   
+    </div>
+
+    <form  class="col form-control" id="form-powerminer" >
+      <h3>Calculate power hashrate with new miner added</h3>
+      <label class="mb-4">Miner</label>
+      <input id ="power-miner" type="number" name="power-miner" placeholder=" value of power of the new miner"  class="col form-control" step="0.01" min="1.000" value=""/>
+
+      <label class ="mb-4">Percent of the miner</label>
+      <input id ="percent-miner" type="number" placeholder="10.472 Eh/s" class="col form-control"   name ="percent-miner"  step="0.01" min="0.25" value=""/>
+
+      <h3 class ="mb-4">My power</h3>
+      <input id="mypower-hashrate"type="number" placeholder=" value in  Th/s" class ="power mb-4"  name ="myPower"  step="0.01" min="1.000" value=""
+        />
+
+        <h3 class ="mb-4">My bonus percent</h3>
+        <input id="bonus-percent"type="number" placeholder=" value in  Th/s" class ="power mb-4"  name ="myPower"  step="0.01" min="1.000" value=""
+          />
+      <button title="calculate"  type ="submit" class ="btn btn-primary" >calculate new power hashrate</button>
+    </form>
+  </div>
+</body>
+</html>
