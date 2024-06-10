@@ -100,26 +100,26 @@ window.onload = function(){
   var netPower = document.getElementById("network-power");
   var myPower = document.getElementById("myPower");
 
-  formPowerMiner.addEventListener("submit", (test) => {
-    test.preventDefault();
+  // formPowerMiner.addEventListener("submit", (event) => {
+  //   event.preventDefault();
 
-    console.log(powerMiner.value);
-    console.log(percentMiner.value);
-    console.log(mypowerHashrate.value);
-    if(percentMiner.value != null){
-     var totalPercent = Number(bonusPercent.value) +  Number(percentMiner.value)
+  //   console.log(powerMiner.value);
+  //   console.log(percentMiner.value);
+  //   console.log(mypowerHashrate.value);
+  //   if(percentMiner.value != null){
+  //    var totalPercent = Number(bonusPercent.value) +  Number(percentMiner.value)
 
-    var newPower = Number(mypowerHashrate.value/1000) + Number(powerMiner.value/1000);
-    var addpower = (Number((powerMiner.value/1000) * totalPercent)/100);
-    var totalPower = addpower + newPower;
-    console.log( "total percent" +  totalPercent );
-    console.log( "addPower" + newPower );
-    console.log( "addPower" + newPower );
-    console.log( "Power total" + totalPower);
+  //   var newPower = Number(mypowerHashrate.value/1000) + Number(powerMiner.value/1000);
+  //   var addpower = (Number((powerMiner.value/1000) * totalPercent)/100);
+  //   var totalPower = addpower + newPower;
+  //   console.log( "total percent" +  totalPercent );
+  //   console.log( "addPower" + newPower );
+  //   console.log( "addPower" + newPower );
+  //   console.log( "Power total" + totalPower);
 
-    }
+  //   }
  
-  });
+  // });
 
   formCoins.addEventListener("submit", (e) => {
     e.preventDefault();
