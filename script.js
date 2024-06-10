@@ -91,6 +91,11 @@ window.onload = function(){
 
   var coinSelect = document.getElementById("coinChoose");
   coinSelect.addEventListener("change", handleSelectChange);
+
+  var supportBtn = document.querySelector('.supportme');
+  var helpGroup = document.querySelector('.helpgroup');
+  supportBtn.addEventListener("click", show);
+
   var boostedReward = document.getElementById("boosted-reward");
   var netPower = document.getElementById("network-power");
   var myPower = document.getElementById("myPower");
@@ -208,5 +213,10 @@ window.onload = function(){
   function handleSelectChange(event) {
     const currentValue = event.target.value;
     console.log(currentValue);
+  }
+
+  function show(event) {
+    event.preventDefault();
+    helpGroup.classList.toggle('show');
   }
 }
