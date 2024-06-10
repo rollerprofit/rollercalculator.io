@@ -217,6 +217,6 @@ window.onload = function(){
 
   function show(event) {
     event.preventDefault();
-    helpGroup.classList.toggle('show');
+    helpGroup.classList.toggle('show-me');
   }
 }
